@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShinTech Academy — Syllabus Khóa học AI cho Comtor & PM</title>
+<title>ShinTech Academy — Syllabus AI-CPM-001 Mobile Optimized</title>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -25,133 +25,103 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { font-family:'Be Vietnam Pro',sans-serif; color:var(--text); background:var(--bg-alt); line-height:1.7; font-size:15px; -webkit-font-smoothing:antialiased; }
+  body { font-family:'Be Vietnam Pro',sans-serif; color:var(--text); background:var(--bg-alt); line-height:1.6; font-size:15px; -webkit-font-smoothing:antialiased; }
 
-  @media print {
-    body { background:white; font-size:11px; line-height:1.5; }
-    .cover { min-height:auto; padding:40px 0; }
-    .cover::before,.cover::after { display:none; }
-    section { break-inside:avoid; padding:20px 0; }
-    .session-table { font-size:9px; }
-    @page { margin:15mm; }
+  /* RESPONSIVE LAYOUT */
+  section { background:var(--bg); margin:24px auto; max-width:900px; border-radius:var(--radius); border:1px solid var(--border); padding:40px; box-shadow:var(--shadow-sm); }
+  
+  @media (max-width: 768px) {
+    section { padding: 24px 16px; margin: 12px; }
+    h1 { font-size: 32px !important; }
+    h2 { font-size: 20px !important; margin-bottom: 16px !important; }
+    
+    /* Grid to Block for Mobile */
+    .cover-meta { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+    .cover-modules { grid-template-columns: 1fr 1fr !important; }
+    .eval-grid { grid-template-columns: 1fr !important; }
+    .tools-grid { grid-template-columns: 1fr !important; }
+    
+    /* Table Scroll */
+    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -16px; padding: 0 16px; }
+    .session-table { min-width: 600px; }
+    .info-table th { width: 120px; font-size: 13px; }
+    
+    .module-header { padding: 16px !important; }
+    .module-header h3 { font-size: 16px !important; }
+    .module-objective { padding: 12px 16px !important; font-size: 13px; }
+    
+    .alloc-bar { height: 30px; }
+    .alloc-bar div { font-size: 9px; }
   }
 
+  /* COVER STYLES */
   .cover {
     background:linear-gradient(135deg,var(--primary) 0%,#1e3a5f 40%,#0c4a6e 100%);
-    color:white; min-height:100vh; display:flex; align-items:center; justify-content:center;
-    position:relative; overflow:hidden;
+    color:white; min-height:80vh; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; padding: 40px 20px;
   }
-  .cover::before {
-    content:''; position:absolute; top:-50%; right:-30%; width:800px; height:800px;
-    background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 70%); border-radius:50%;
-  }
-  .cover::after {
-    content:''; position:absolute; bottom:-40%; left:-20%; width:600px; height:600px;
-    background:radial-gradient(circle,rgba(220,38,38,.1) 0%,transparent 70%); border-radius:50%;
-  }
-  .cover-inner { text-align:center; position:relative; z-index:1; padding:60px 20px; }
+  .cover-inner { text-align:center; z-index:1; width: 100%; max-width: 800px; }
   .cover-badge {
-    display:inline-block; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:4px;
+    display:inline-block; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:2px;
     text-transform:uppercase; color:rgba(255,255,255,.6); border:1px solid rgba(255,255,255,.2);
-    padding:8px 24px; border-radius:100px; margin-bottom:40px;
+    padding:6px 16px; border-radius:100px; margin-bottom:24px;
   }
-  .cover h1 { font-size:clamp(28px,5vw,48px); font-weight:800; line-height:1.15; margin-bottom:8px; letter-spacing:-1px; }
+  .cover h1 { font-size:48px; font-weight:800; line-height:1.1; margin-bottom:12px; }
   .cover h1 span { display:block; background:linear-gradient(135deg,#60a5fa,#f472b6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-  .cover-subtitle { font-size:18px; font-weight:300; color:rgba(255,255,255,.7); margin-bottom:48px; }
-  .cover-meta { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; max-width:640px; margin:0 auto 48px; }
-  .cover-meta-item { background:rgba(255,255,255,.08); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-sm); padding:16px 12px; text-align:center; }
-  .cover-meta-item .label { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,.5); margin-bottom:4px; }
-  .cover-meta-item .value { font-weight:700; font-size:16px; }
-  .cover-modules { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:680px; margin:0 auto; }
-  .cover-mod { padding:14px 8px; border-radius:var(--radius-sm); font-size:11px; font-weight:600; text-align:center; line-height:1.4; border:1px solid rgba(255,255,255,.15); }
-  .cover-mod.m1 { background:rgba(37,99,235,.25); border-color:rgba(37,99,235,.4); }
-  .cover-mod.m2 { background:rgba(5,150,105,.25); border-color:rgba(5,150,105,.4); }
-  .cover-mod.m3 { background:rgba(217,119,6,.25); border-color:rgba(217,119,6,.4); }
-  .cover-mod.m4 { background:rgba(220,38,38,.25); border-color:rgba(220,38,38,.4); }
-  .cover-mod .num { font-family:'Space Mono',monospace; font-size:20px; font-weight:700; display:block; margin-bottom:4px; opacity:.7; }
+  .cover-subtitle { font-size:16px; font-weight:300; color:rgba(255,255,255,.7); margin-bottom:32px; }
+  
+  .cover-meta { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:32px; }
+  .cover-meta-item { background:rgba(255,255,255,.08); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-sm); padding:12px 8px; }
+  .cover-meta-item .label { font-size:9px; text-transform:uppercase; color:rgba(255,255,255,.5); }
+  .cover-meta-item .value { font-weight:700; font-size:14px; }
 
-  section { background:var(--bg); margin:24px auto; max-width:900px; border-radius:var(--radius); border:1px solid var(--border); padding:48px; box-shadow:var(--shadow-sm); }
-  @media (max-width:640px) { section { padding:28px 20px; margin:12px; } }
-  .section-num { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--secondary); margin-bottom:8px; font-weight:700; }
-  section h2 { font-size:24px; font-weight:800; color:var(--primary); margin-bottom:24px; letter-spacing:-.5px; line-height:1.3; }
+  .cover-modules { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .cover-mod { padding:12px 4px; border-radius:var(--radius-sm); font-size:10px; font-weight:600; border:1px solid rgba(255,255,255,.15); }
+  .cover-mod.m1 { background:rgba(37,99,235,.25); }
+  .cover-mod.m2 { background:rgba(5,150,105,.25); }
+  .cover-mod.m3 { background:rgba(217,119,6,.25); }
+  .cover-mod.m4 { background:rgba(220,38,38,.25); }
+  .cover-mod .num { font-family:'Space Mono',monospace; font-size:16px; display:block; margin-bottom:2px; }
 
-  .obj-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
-  .obj-list li { display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:var(--bg-alt); border-radius:var(--radius-sm); border-left:3px solid var(--secondary); line-height:1.6; }
-  .obj-list li .icon { flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--secondary); color:white; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; margin-top:2px; }
-  .obj-list li strong { color:var(--primary); }
+  /* COMPONENTS */
+  .section-num { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--secondary); font-weight:700; }
+  h2 { font-size:24px; font-weight:800; color:var(--primary); margin-bottom:24px; }
+
+  .obj-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .obj-list li { display:flex; gap:12px; padding:12px; background:var(--bg-alt); border-radius:var(--radius-sm); border-left:3px solid var(--secondary); font-size: 14px; }
+  .obj-list li .icon { flex-shrink:0; width:24px; height:24px; border-radius:50%; background:var(--secondary); color:white; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; }
 
   .info-table { width:100%; border-collapse:collapse; font-size:14px; }
-  .info-table th { text-align:left; padding:12px 16px; background:var(--bg-alt); border:1px solid var(--border); font-weight:600; color:var(--text-secondary); width:200px; vertical-align:top; }
-  .info-table td { padding:12px 16px; border:1px solid var(--border); vertical-align:top; }
+  .info-table th { text-align:left; padding:12px; background:var(--bg-alt); border:1px solid var(--border); color:var(--text-secondary); width:180px; }
+  .info-table td { padding:12px; border:1px solid var(--border); }
 
-  .eval-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  @media (max-width:640px) { .eval-grid { grid-template-columns:1fr; } }
-  .eval-card { border-radius:var(--radius-sm); padding:24px; text-align:center; border:1px solid var(--border); position:relative; overflow:hidden; }
-  .eval-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
-  .eval-card:nth-child(1)::before { background:var(--mod1); }
-  .eval-card:nth-child(2)::before { background:var(--mod2); }
-  .eval-card:nth-child(3)::before { background:var(--mod4); }
-  .eval-card .percent { font-family:'Space Mono',monospace; font-size:36px; font-weight:700; color:var(--primary); line-height:1; margin-bottom:8px; }
-  .eval-card .eval-label { font-weight:700; font-size:14px; margin-bottom:6px; }
-  .eval-card .eval-desc { font-size:13px; color:var(--text-secondary); line-height:1.5; }
-
-  .module-detail { margin-bottom:40px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); }
-  .module-header { padding:20px 28px; color:white; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .eval-card { border-radius:var(--radius-sm); padding:20px; text-align:center; border:1px solid var(--border); margin-bottom: 12px; }
+  .eval-card .percent { font-family:'Space Mono',monospace; font-size:32px; font-weight:700; color:var(--primary); }
+  
+  .module-detail { margin-bottom:32px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); }
+  .module-header { padding:20px; color:white; display:flex; justify-content:space-between; align-items: center; }
   .module-header.m1 { background:linear-gradient(135deg,var(--mod1),#1d4ed8); }
   .module-header.m2 { background:linear-gradient(135deg,var(--mod2),#047857); }
   .module-header.m3 { background:linear-gradient(135deg,var(--mod3),#b45309); }
   .module-header.m4 { background:linear-gradient(135deg,var(--mod4),#b91c1c); }
-  .module-header .mod-num { font-family:'Space Mono',monospace; font-size:13px; opacity:.7; letter-spacing:2px; }
-  .module-header h3 { font-size:18px; font-weight:700; margin:2px 0 0; color:white; }
-  .module-header .mod-meta { font-size:13px; opacity:.8; text-align:right; }
-  .module-objective { padding:16px 28px; font-size:14px; color:var(--text-secondary); border-bottom:1px solid var(--border); }
-  .module-objective strong { color:var(--text); }
 
   .session-table { width:100%; border-collapse:collapse; font-size:13px; }
-  .session-table thead th { padding:10px 12px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-secondary); background:var(--bg-alt); border-bottom:2px solid var(--border); font-weight:600; }
-  .session-table thead th:first-child { text-align:center; width:52px; }
-  .session-table thead th:last-child { text-align:center; width:48px; }
-  .session-table tbody tr { border-bottom:1px solid var(--border-light); }
-  .session-table tbody tr:nth-child(even) { background:var(--bg-alt); }
-  .session-table tbody tr:hover { background:#f0f4ff; }
-  .session-table tbody tr.exam-row { background:#fef2f2; font-weight:600; }
-  .session-table tbody tr.project-row { background:#eff6ff; font-weight:600; }
-  .session-table td { padding:10px 12px; vertical-align:top; }
-  .session-table td:first-child { text-align:center; font-family:'Space Mono',monospace; font-weight:700; font-size:12px; color:var(--text-light); }
-  .session-table td:last-child { text-align:center; font-family:'Space Mono',monospace; font-size:12px; }
-  .session-table .topic-name { font-weight:600; color:var(--text); }
-  .tag { display:inline-block; font-size:10px; font-weight:600; padding:2px 8px; border-radius:100px; text-transform:uppercase; letter-spacing:.5px; }
+  .session-table th { padding:10px; background:var(--bg-alt); border-bottom:2px solid var(--border); text-align:left; }
+  .session-table td { padding:10px; border-bottom:1px solid var(--border-light); }
+  .tag { font-size:9px; padding:2px 6px; border-radius:4px; font-weight:700; text-transform: uppercase; }
   .tag-lecture { background:#dbeafe; color:#1e40af; }
   .tag-lab { background:#d1fae5; color:#065f46; }
-  .tag-review { background:#e0e7ff; color:#3730a3; }
-  .tag-exam { background:#fee2e2; color:#991b1b; }
   .tag-project { background:#fef3c7; color:#92400e; }
+  .tag-exam { background:#fee2e2; color:#991b1b; }
 
-  .tools-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
-  .tool-card { padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-alt); }
-  .tool-card .tool-purpose { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-light); margin-bottom:6px; font-weight:600; }
-  .tool-card .tool-name { font-weight:700; font-size:15px; color:var(--primary); margin-bottom:4px; }
-  .tool-card .tool-desc { font-size:12px; color:var(--text-secondary); line-height:1.5; }
+  .tool-card { padding:12px; border:1px solid var(--border); background:var(--bg-alt); border-radius: 8px; margin-bottom: 8px;}
+  .tool-name { font-weight:700; color:var(--primary); font-size:14px; }
+  .tool-desc { font-size:12px; color:var(--text-secondary); }
 
-  .alloc-bar { display:flex; height:40px; border-radius:var(--radius-sm); overflow:hidden; margin-bottom:16px; border:1px solid var(--border); }
-  .alloc-bar div { display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; letter-spacing:.5px; }
-  .alloc-legend { display:flex; flex-wrap:wrap; gap:16px; font-size:13px; }
-  .alloc-legend-item { display:flex; align-items:center; gap:8px; }
-  .alloc-dot { width:12px; height:12px; border-radius:3px; flex-shrink:0; }
-
-  .process-steps { position:relative; padding-left:32px; }
-  .process-steps::before { content:''; position:absolute; left:11px; top:8px; bottom:8px; width:2px; background:var(--border); }
-  .process-step { position:relative; margin-bottom:20px; padding-left:20px; }
-  .process-step::before { content:''; position:absolute; left:-21px; top:8px; width:12px; height:12px; border-radius:50%; background:var(--secondary); border:3px solid white; box-shadow:0 0 0 2px var(--secondary); }
-  .process-step .step-label { font-weight:700; color:var(--primary); font-size:14px; margin-bottom:4px; }
-  .process-step .step-desc { color:var(--text-secondary); font-size:14px; line-height:1.6; }
-
-  .note-box { padding:20px 24px; background:var(--bg-warm); border-left:4px solid var(--mod3); border-radius:0 var(--radius-sm) var(--radius-sm) 0; margin:20px 0; font-size:14px; line-height:1.7; }
-  .note-box strong { color:var(--primary); }
-
-  .footer { text-align:center; padding:48px 20px 40px; color:var(--text-secondary); font-size:13px; }
-  .footer .logo-text { font-size:18px; font-weight:800; color:var(--primary); margin-bottom:8px; }
-  .footer .slogan { font-style:italic; color:var(--text-light); font-size:14px; }
+  .process-step { padding-left: 20px; border-left: 2px solid var(--secondary); margin-bottom: 20px; position: relative; }
+  .process-step::after { content:''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: var(--secondary); border-radius: 50%; }
+  
+  .footer { text-align:center; padding:40px 20px; color:var(--text-secondary); font-size:12px; }
 </style>
 </head>
 <body>
@@ -159,155 +129,97 @@
 <div class="cover">
   <div class="cover-inner">
     <div class="cover-badge">ShinTech Academy · AI-CPM-001</div>
-    <h1>ỨNG DỤNG AI<br><span>nâng cao hiệu suất công việc</span></h1>
-    <p class="cover-subtitle">Version 1.0</p>
+    <h1>ỨNG DỤNG AI<br><span>nâng cao hiệu suất</span></h1>
+    <p class="cover-subtitle">Dành cho Comtor, BrSE, PM & BA</p>
     <div class="cover-meta">
-      <div class="cover-meta-item"><div class="label">Tổng thời lượng</div><div class="value">24 giờ</div></div>
+      <div class="cover-meta-item"><div class="label">Thời lượng</div><div class="value">24 giờ</div></div>
       <div class="cover-meta-item"><div class="label">Số buổi</div><div class="value">12 buổi</div></div>
-      <div class="cover-meta-item"><div class="label">Thời gian</div><div class="value">~1.5 tháng</div></div>
-      <div class="cover-meta-item"><div class="label">Lịch học</div><div class="value">2 buổi/tuần</div></div>
+      <div class="cover-meta-item"><div class="label">Thời gian</div><div class="value">1.5 tháng</div></div>
+      <div class="cover-meta-item"><div class="label">Lịch</div><div class="value">2 buổi/tuần</div></div>
     </div>
     <div class="cover-modules">
-      <div class="cover-mod m1"><span class="num">01</span>AI Foundation<br>& Prompt</div>
-      <div class="cover-mod m2"><span class="num">02</span>AI cho<br>Comtor & PM</div>
-      <div class="cover-mod m3"><span class="num">03</span>AI Agent<br>& Dify</div>
-      <div class="cover-mod m4"><span class="num">04</span>MCP Integration<br>& Capstone</div>
+      <div class="cover-mod m1"><span class="num">01</span>Foundation</div>
+      <div class="cover-mod m2"><span class="num">02</span>Tasks AI</div>
+      <div class="cover-mod m3"><span class="num">03</span>Dify Agent</div>
+      <div class="cover-mod m4"><span class="num">04</span>Capstone</div>
     </div>
   </div>
 </div>
 
 <section>
   <div class="section-num">Phần 01</div>
-  <h2>Mục tiêu khóa học</h2>
-  <p style="color:var(--text-secondary);margin-bottom:20px;">Sau khi hoàn thành khóa học, học viên sẽ có khả năng:</p>
+  <h2>Mục tiêu đào tạo</h2>
   <ul class="obj-list">
-    <li><span class="icon">1</span><div><strong>Nâng cao hiệu suất rõ rệt:</strong> Ứng dụng AI vào công việc thực tế của Comtor & PM, từ dịch thuật, viết tài liệu đến quản lý dự án và giao tiếp với khách hàng.</div></li>
-    <li><span class="icon">2</span><div><strong>Thành thạo công cụ & Prompt:</strong> Sử dụng thành thạo các AI tools phổ biến, thiết kế prompt hiệu quả và xây dựng được các workflow tự động hóa phục vụ công việc hàng ngày.</div></li>
-    <li><span class="icon">3</span><div><strong>Thiết kế AI Agent bằng Dify:</strong> Tự thiết kế và triển khai AI Agent workflow bằng Dify, tự động hóa end-to-end các quy trình như xử lý ticket, tạo tài liệu và báo cáo.</div></li>
-    <li><span class="icon">4</span><div><strong>Tư duy AI-first:</strong> Mỗi học viên tự tạo AI Agents riêng hỗ trợ task vụ cá nhân và phát triển tư duy AI-first để áp dụng linh hoạt vào các bài toán quản lý khác.</div></li>
+    <li><span class="icon">1</span><div><strong>Hiệu suất vượt trội:</strong> Tự động hóa dịch thuật, viết PRD/Spec và tóm tắt meeting.</div></li>
+    <li><span class="icon">2</span><div><strong>Làm chủ công cụ:</strong> Thành thạo Prompt Engineering và các công cụ AI (Gemini, ChatGPT).</div></li>
+    <li><span class="icon">3</span><div><strong>Xây dựng AI Agent:</strong> Tự thiết kế workflow xử lý ticket/báo cáo trên Dify.</div></li>
   </ul>
 </section>
 
 <section>
   <div class="section-num">Phần 02</div>
-  <h2>Đối tượng học viên & Yêu cầu</h2>
-  <table class="info-table">
-    <tr><th>Đối tượng chính</th><td>Comtor (IT Communicator, BrSE), Project Manager, Business Analyst và các vai trò liên quan trong dự án IT.</td></tr>
-    <tr><th>Kinh nghiệm</th><td>Nhân sự từ Fresher đến Senior có nhu cầu ứng dụng AI và tự động hóa workflow. Có kiến thức cơ bản về IT project (Agile, Jira) là một lợi thế.</td></tr>
-    <tr><th>Thiết bị yêu cầu</th><td>Laptop cá nhân. Kết nối Internet ổn định để truy cập các công cụ Cloud/AI.</td></tr>
-    <tr><th>Cam kết tham gia</th><td>Tham gia tối thiểu 80% số buổi học, hoàn thành đầy đủ bài tập và chủ động áp dụng vào công việc thực tế.</td></tr>
-  </table>
+  <h2>Thông tin khóa học</h2>
+  <div class="table-container">
+    <table class="info-table">
+      <tr><th>Đối tượng</th><td>Comtor, BrSE, PM, BA dự án Nhật</td></tr>
+      <tr><th>Yêu cầu</th><td>Laptop cá nhân, kiến thức IT cơ bản</td></tr>
+      <tr><th>Cam kết</th><td>Tham gia ≥ 80%, hoàn thành Final Project</td></tr>
+    </table>
+  </div>
 </section>
 
 <section>
   <div class="section-num">Phần 03</div>
-  <h2>Phương thức đánh giá</h2>
-  <div class="eval-grid">
-    <div class="eval-card"><div class="percent">30%</div><div class="eval-label">Quiz / Đánh giá</div><div class="eval-desc">Kiểm tra kiến thức AI cơ bản, Prompt engineering và lý thuyết workflow.</div></div>
-    <div class="eval-card"><div class="percent">40%</div><div class="eval-label">Assignment / Lab</div><div class="eval-desc">Bài tập thực hành từng module, xây mini AI workflow, ứng dụng vào case thực tế.</div></div>
-    <div class="eval-card"><div class="percent">30%</div><div class="eval-label">Final Project</div><div class="eval-desc">Demo hệ thống AI Agent end-to-end tự xây dựng. Đánh giá năng lực trước & sau khóa học.</div></div>
+  <h2>Cấu trúc Module</h2>
+
+  <div class="module-detail">
+    <div class="module-header m1">
+      <div><div class="mod-num">M1</div><h3>Foundation & Prompt</h3></div>
+      <div style="font-size:12px; opacity:0.8">Buổi 1-4</div>
+    </div>
+    <div class="table-container">
+      <table class="session-table">
+        <thead><tr><th>B</th><th>Nội dung</th><th>Phương pháp</th><th>Đầu ra</th></tr></thead>
+        <tbody>
+          <tr><td>01</td><td>Tổng quan AI use cases</td><td>Lecture</td><td><span class="tag tag-lecture">Overview</span></td></tr>
+          <tr><td>02</td><td>Prompt Engineering</td><td>Practice</td><td><span class="tag tag-lab">Library</span></td></tr>
+          <tr><td>03</td><td>Workflow Thinking</td><td>Case Study</td><td><span class="tag tag-lab">System</span></td></tr>
+          <tr><td>04</td><td>AI Dịch thuật & Spec</td><td>Lab</td><td><span class="tag tag-project">JP/VN</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="module-detail">
+    <div class="module-header m3">
+      <div><div class="mod-num">M3</div><h3>Dify Agent & Workflow</h3></div>
+      <div style="font-size:12px; opacity:0.8">Buổi 9-10</div>
+    </div>
+    <div class="table-container">
+      <table class="session-table">
+        <thead><tr><th>B</th><th>Nội dung</th><th>Phương pháp</th><th>Đầu ra</th></tr></thead>
+        <tbody>
+          <tr><td>09</td><td>Agent & MCP Concept</td><td>Lecture</td><td><span class="tag tag-lecture">Design</span></td></tr>
+          <tr><td>10</td><td>Dify Workflow (Jira)</td><td>Lab</td><td><span class="tag tag-lab">Hands-on</span></td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="section-num">Phần 04</div>
-  <h2>Cấu trúc khóa học — 4 Modules · 12 buổi · 24 giờ</h2>
-  <p style="color:var(--text-secondary);margin-bottom:28px;">Lộ trình được thiết kế đan xen chặt chẽ giữa lý thuyết nền tảng (AI Concepts, Prompting) và thực hành chuyên sâu (Dify, MCP Integration).</p>
-
-  <div class="module-detail">
-    <div class="module-header m1"><div><div class="mod-num">MODULE 01</div><h3>AI Foundation & Prompt Engineering</h3></div><div class="mod-meta">4 giờ · Buổi 1–4</div></div>
-    <div class="module-objective"><strong>Mục tiêu:</strong> Nắm vững tư duy tự động hóa (automation mindset), hiểu các use cases thực tế và bắt đầu ứng dụng Prompt vào công việc thông dịch/tài liệu.</div>
-    <table class="session-table"><thead><tr><th>Buổi</th><th>Nội dung thực tế</th><th>Phương pháp giảng dạy</th><th>Đầu ra / Ghi chú</th><th>Giờ</th></tr></thead><tbody>
-      <tr><td>01</td><td class="topic-name">Tổng quan AI trong IT project, Comtor & PM use cases</td><td>Lecture + Demo</td><td><span class="tag tag-lecture">Overview</span></td><td>1</td></tr>
-      <tr><td>02</td><td class="topic-name">Kỹ thuật Prompt Engineering</td><td>Lecture + Practice</td><td><span class="tag tag-lab">Prompt library</span></td><td>1</td></tr>
-      <tr><td>03</td><td class="topic-name">AI workflow thinking (pipeline, automation mindset)</td><td>Lecture + Case study</td><td><span class="tag tag-review">System thinking</span></td><td>1</td></tr>
-      <tr class="project-row"><td>04</td><td class="topic-name">AI cho Comtor: Dịch Jira/spec + chuẩn hóa tài liệu</td><td>Practice + Lab</td><td><span class="tag tag-lab">JP/EN/VN</span></td><td>1</td></tr>
-    </tbody></table>
-  </div>
-
-  <div class="module-detail">
-    <div class="module-header m2"><div><div class="mod-num">MODULE 02</div><h3>AI cho Comtor & PM Tasks</h3></div><div class="mod-meta">4 giờ · Buổi 5–8</div></div>
-    <div class="module-objective"><strong>Mục tiêu:</strong> Tự động hóa các tác vụ quản lý dự án hàng ngày: Meeting summary, viết PRD/User story, quản lý backlog và làm báo cáo.</div>
-    <table class="session-table"><thead><tr><th>Buổi</th><th>Nội dung thực tế</th><th>Phương pháp giảng dạy</th><th>Đầu ra / Ghi chú</th><th>Giờ</th></tr></thead><tbody>
-      <tr><td>05</td><td class="topic-name">AI cho Comtor: Meeting summary + communication</td><td>Practice + Tool demo</td><td><span class="tag tag-lab">Meeting AI</span></td><td>1</td></tr>
-      <tr><td>06</td><td class="topic-name">AI cho PM: PRD + user story + acceptance criteria</td><td>Lecture + Lab</td><td><span class="tag tag-lecture">Agile</span></td><td>1</td></tr>
-      <tr><td>07</td><td class="topic-name">AI cho PM: Backlog, estimation, risk detection</td><td>Case study + Practice</td><td><span class="tag tag-review">Sprint</span></td><td>1</td></tr>
-      <tr class="project-row"><td>08</td><td class="topic-name">AI report + stakeholder communication</td><td>Practice + Assignment</td><td><span class="tag tag-project">Weekly report</span></td><td>1</td></tr>
-    </tbody></table>
-  </div>
-
-  <div class="module-detail">
-    <div class="module-header m3"><div><div class="mod-num">MODULE 03</div><h3>AI Agent & Dify Workflow</h3></div><div class="mod-meta">8 giờ · Buổi 9–10</div></div>
-    <div class="module-objective"><strong>Mục tiêu:</strong> Đi sâu vào kiến trúc Agent, thực hành xây dựng workflow đa bước (multi-step), RAG và Knowledge base trực tiếp trên nền tảng Dify.</div>
-    <table class="session-table"><thead><tr><th>Buổi</th><th>Nội dung thực tế</th><th>Phương pháp giảng dạy</th><th>Đầu ra / Ghi chú</th><th>Giờ</th></tr></thead><tbody>
-      <tr><td>09</td><td class="topic-name">AI Agent + MCP concept (tool calling, Agent design)</td><td>Lecture + Demo</td><td><span class="tag tag-lecture">Kiến trúc</span></td><td>4</td></tr>
-      <tr class="project-row"><td>10</td><td class="topic-name">Dify workflow cơ bản + tool calling (mock Jira)</td><td>Lab</td><td><span class="tag tag-lab">Hands-on Dify</span></td><td>4</td></tr>
-    </tbody></table>
-  </div>
-
-  <div class="module-detail">
-    <div class="module-header m4"><div><div class="mod-num">MODULE 04</div><h3>Real Project & Automation (MCP)</h3></div><div class="mod-meta">8 giờ · Buổi 11–12</div></div>
-    <div class="module-objective"><strong>Mục tiêu:</strong> Tích hợp luồng công việc vào thực tế (Slack, Jira, Calendar) và hoàn thiện hệ thống AI Agent cá nhân phục vụ công việc.</div>
-    <table class="session-table"><thead><tr><th>Buổi</th><th>Nội dung thực tế</th><th>Phương pháp giảng dạy</th><th>Đầu ra / Ghi chú</th><th>Giờ</th></tr></thead><tbody>
-      <tr><td>11</td><td class="topic-name">MCP integration: Jira + Slack automation workflow</td><td>Lab + Project</td><td><span class="tag tag-lab">Real integration</span></td><td>4</td></tr>
-      <tr class="exam-row"><td>12</td><td class="topic-name">Capstone project: AI Agent end-to-end (Dify + MCP)</td><td>Project + Review</td><td><span class="tag tag-exam">Demo system</span></td><td>4</td></tr>
-    </tbody></table>
-  </div>
-</section>
-
-<section>
-  <div class="section-num">Phần 05</div>
-  <h2>Phân bổ thời lượng khóa học</h2>
-  <div class="alloc-bar">
-    <div style="width:33%;background:var(--mod1);">Lecture 33%</div>
-    <div style="width:50%;background:var(--mod2);">Lab 50%</div>
-    <div style="width:9%;background:#6366f1;">Guide 8%</div>
-    <div style="width:8%;background:var(--mod4);">Exam 9%</div>
-  </div>
-  <div class="alloc-legend">
-    <div class="alloc-legend-item"><div class="alloc-dot" style="background:var(--mod1);"></div>Concept / Lecture — 8 giờ</div>
-    <div class="alloc-legend-item"><div class="alloc-dot" style="background:var(--mod2);"></div>Assignment / Lab — 12 giờ</div>
-    <div class="alloc-legend-item"><div class="alloc-dot" style="background:#6366f1;"></div>Guides / Review — 2 giờ</div>
-    <div class="alloc-legend-item"><div class="alloc-dot" style="background:var(--mod4);"></div>Final Exam / Project — 2 giờ</div>
-  </div>
-</section>
-
-<section>
-  <div class="section-num">Phần 06</div>
-  <h2>Quy trình đào tạo & Triển khai</h2>
-  <div class="process-steps">
-    <div class="process-step"><div class="step-label">Kick-off & Khảo sát năng lực</div><div class="step-desc">Đánh giá năng lực đầu vào và phân tích các nút thắt trong công việc (pain points) thực tế của từng học viên.</div></div>
-    <div class="process-step"><div class="step-label">Training theo module & Thực hành song song</div><div class="step-desc">Giảng viên hướng dẫn lý thuyết (Lecture), học viên thực hành ngay lập tức bằng việc dùng các AI Tools, xây dựng workflow, tạo PRD, dịch tài liệu.</div></div>
-    <div class="process-step"><div class="step-label">Review & Feedback liên tục</div><div class="step-desc">Giảng viên và trợ giảng sẽ trực tiếp xem lại lỗi logic, giúp tối ưu hóa prompt và hướng dẫn cách xử lý các vấn đề phát sinh khi áp dụng vào công việc thật.</div></div>
-    <div class="process-step"><div class="step-label">Final Project & Demo</div><div class="step-desc">Học viên demo AI Agent hoặc workflow tự động của riêng mình. Tiến hành đánh giá năng lực đầu ra và đo lường hiệu quả năng suất (productivity gain).</div></div>
-  </div>
-</section>
-
-<section>
-  <div class="section-num">Phần 07</div>
-  <h2>Công cụ & Tài liệu tham khảo</h2>
+  <h2>Công cụ sử dụng</h2>
   <div class="tools-grid">
-    <div class="tool-card"><div class="tool-purpose">AI Platform</div><div class="tool-name">Dify</div><div class="tool-desc">Nền tảng chính để xây dựng AI Agent, RAG và Workflow đa bước (multi-step).</div></div>
-    <div class="tool-card"><div class="tool-purpose">LLM & Prompting</div><div class="tool-name">ChatGPT / Gemini</div><div class="tool-desc">Sử dụng OpenAI API hoặc Gemini để làm engine xử lý văn bản và logic cốt lõi.</div></div>
-    <div class="tool-card"><div class="tool-purpose">Project Management</div><div class="tool-name">Jira (Mock / Real)</div><div class="tool-desc">Thực hành tự động hóa tracking bug, tạo User Story và quản lý Backlog.</div></div>
-    <div class="tool-card"><div class="tool-purpose">Communication</div><div class="tool-name">Slack</div><div class="tool-desc">Tích hợp MCP để tự động đẩy thông báo, báo cáo tuần và tóm tắt meeting.</div></div>
+    <div class="tool-card"><div class="tool-name">Dify.ai</div><div class="tool-desc">Xây dựng AI Agent & Workflow</div></div>
+    <div class="tool-card"><div class="tool-name">Jira / Slack</div><div class="tool-desc">Tích hợp tự động hóa báo cáo</div></div>
+    <div class="tool-card"><div class="tool-name">LLM Engine</div><div class="tool-desc">ChatGPT, Gemini, Claude API</div></div>
   </div>
-</section>
-
-<section>
-  <div class="section-num">Phần 08</div>
-  <h2>Kiểm tra & Áp dụng thực tế</h2>
-  <table class="info-table">
-    <tr><th style="background:var(--mod1-bg);color:var(--mod1);border-color:var(--mod1-border);">Mini Quiz<br><small style="font-weight:400;">Sau mỗi buổi</small></th><td>Củng cố kiến thức về AI concepts, prompt engineering, workflow logic và các tình huống xử lý dự án IT.</td></tr>
-    <tr><th style="background:var(--mod2-bg);color:var(--mod2);border-color:var(--mod2-border);">Assignments<br><small style="font-weight:400;">Cuối Module</small></th><td>Review và tinh chỉnh các prompt/workflow học viên tự tạo cho bài toán viết PRD, dịch thuật spec Nhật-Việt.</td></tr>
-    <tr><th style="background:var(--mod4-bg);color:var(--mod4);border-color:var(--mod4-border);">Final Output<br><small style="font-weight:400;">Bảo vệ cuối khóa</small></th><td><strong>AI System Hoàn chỉnh:</strong> Trình bày cách Agent tự động hóa end-to-end các công việc lặp đi lặp lại của mình (Ticket, Reporting) và đánh giá độ cải thiện hiệu suất.</td></tr>
-  </table>
 </section>
 
 <div class="footer">
-  <div class="logo-text">ShinTech Academy</div>
-  <div class="slogan">"Đào tạo BrSE thế hệ mới — Kết nối công nghệ AI với thị trường Nhật Bản"</div>
-  <p style="margin-top:16px;font-size:12px;color:var(--text-light);">Syllabus v1.0 · Mã khóa học: AI-CPM-001 · © 2026 ShinTech Academy</p>
+  <div style="font-weight:800; color:var(--primary); font-size:16px;">ShinTech Academy</div>
+  <p>Syllabus v1.0 · Mã: AI-CPM-001 · © 2026</p>
 </div>
 
 </body>
