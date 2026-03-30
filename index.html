@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ShinTech Academy — Syllabus Khóa học AI BrSE</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0f2b4c;
+    --primary-light: #1a3f6f;
+    --secondary: #2563eb;
+    --accent: #dc2626;
+    --mod1: #2563eb;
+    --mod2: #059669;
+    --mod3: #d97706;
+    --mod4: #dc2626;
+    --mod1-bg: #eff6ff; --mod2-bg: #ecfdf5; --mod3-bg: #fffbeb; --mod4-bg: #fef2f2;
+    --mod1-border: #bfdbfe; --mod2-border: #a7f3d0; --mod3-border: #fde68a; --mod4-border: #fecaca;
+    --text: #1e293b; --text-secondary: #475569; --text-light: #94a3b8;
+    --bg: #ffffff; --bg-alt: #f8fafc; --bg-warm: #fefce8;
+    --border: #e2e8f0; --border-light: #f1f5f9;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+    --radius: 12px; --radius-sm: 8px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Be Vietnam Pro',sans-serif; color:var(--text); background:var(--bg-alt); line-height:1.7; font-size:15px; -webkit-font-smoothing:antialiased; }
+
+  @media print {
+    body { background:white; font-size:11px; line-height:1.5; }
+    .cover { min-height:auto; padding:40px 0; }
+    .cover::before,.cover::after { display:none; }
+    section { break-inside:avoid; padding:20px 0; }
+    .session-table { font-size:9px; }
+    .table-responsive { overflow-x: visible !important; } /* Tắt cuộn ngang khi in */
+    @page { margin:15mm; }
+  }
+
+  .cover {
+    background:linear-gradient(135deg,var(--primary) 0%,#1e3a5f 40%,#0c4a6e 100%);
+    color:white; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .cover::before {
+    content:''; position:absolute; top:-50%; right:-30%; width:800px; height:800px;
+    background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 70%); border-radius:50%;
+  }
+  .cover::after {
+    content:''; position:absolute; bottom:-40%; left:-20%; width:600px; height:600px;
+    background:radial-gradient(circle,rgba(220,38,38,.1) 0%,transparent 70%); border-radius:50%;
+  }
+  .cover-inner { text-align:center; position:relative; z-index:1; padding:60px 20px; width: 100%; }
+  .cover-badge {
+    display:inline-block; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:4px;
+    text-transform:uppercase; color:rgba(255,255,255,.6); border:1px solid rgba(255,255,255,.2);
+    padding:8px 24px; border-radius:100px; margin-bottom:40px;
+  }
+  .cover h1 { font-size:clamp(28px,6vw,48px); font-weight:800; line-height:1.2; margin-bottom:12px; letter-spacing:-1px; }
+  .cover h1 span { display:block; background:linear-gradient(135deg,#60a5fa,#f472b6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .cover-subtitle { font-size:clamp(15px, 3vw, 18px); font-weight:300; color:rgba(255,255,255,.7); margin-bottom:48px; }
+  .cover-meta { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; max-width:640px; margin:0 auto 48px; }
+  .cover-meta-item { background:rgba(255,255,255,.08); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-sm); padding:16px 12px; text-align:center; }
+  .cover-meta-item .label { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,.5); margin-bottom:4px; }
+  .cover-meta-item .value { font-weight:700; font-size:16px; }
+  .cover-modules { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:680px; margin:0 auto; }
+  .cover-mod { padding:14px 8px; border-radius:var(--radius-sm); font-size:11px; font-weight:600; text-align:center; line-height:1.4; border:1px solid rgba(255,255,255,.15); }
+  .cover-mod.m1 { background:rgba(37,99,235,.25); border-color:rgba(37,99,235,.4); }
+  .cover-mod.m2 { background:rgba(5,150,105,.25); border-color:rgba(5,150,105,.4); }
+  .cover-mod.m3 { background:rgba(217,119,6,.25); border-color:rgba(217,119,6,.4); }
+  .cover-mod.m4 { background:rgba(220,38,38,.25); border-color:rgba(220,38,38,.4); }
+  .cover-mod .num { font-family:'Space Mono',monospace; font-size:20px; font-weight:700; display:block; margin-bottom:4px; opacity:.7; }
+
+  section { background:var(--bg); margin:24px auto; max-width:900px; border-radius:var(--radius); border:1px solid var(--border); padding:48px; box-shadow:var(--shadow-sm); width: calc(100% - 32px); }
+  
+  .section-num { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--secondary); margin-bottom:8px; font-weight:700; }
+  section h2 { font-size:clamp(20px, 4vw, 24px); font-weight:800; color:var(--primary); margin-bottom:24px; letter-spacing:-.5px; line-height:1.3; }
+
+  .obj-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .obj-list li { display:flex; gap:14px; align-items:flex-start; padding:14px 18px; background:var(--bg-alt); border-radius:var(--radius-sm); border-left:3px solid var(--secondary); line-height:1.6; }
+  .obj-list li .icon { flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--secondary); color:white; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; margin-top:2px; }
+  .obj-list li strong { color:var(--primary); display:block; margin-bottom:2px; }
+
+  /* Bọc Table để vuốt ngang trên Mobile */
+  .table-responsive { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:var(--radius-sm); border:1px solid var(--border); }
+  
+  .info-table { width:100%; border-collapse:collapse; font-size:14px; min-width: 500px; }
+  .info-table th { text-align:left; padding:14px 16px; background:var(--bg-alt); border-bottom:1px solid var(--border); border-right:1px solid var(--border); font-weight:600; color:var(--text-secondary); width:30%; vertical-align:top; }
+  .info-table td { padding:14px 16px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .info-table tr:last-child th, .info-table tr:last-child td { border-bottom: none; }
+
+  .eval-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .eval-card { border-radius:var(--radius-sm); padding:24px; text-align:center; border:1px solid var(--border); position:relative; overflow:hidden; }
+  .eval-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+  .eval-card:nth-child(1)::before { background:var(--mod1); }
+  .eval-card:nth-child(2)::before { background:var(--mod2); }
+  .eval-card:nth-child(3)::before { background:var(--mod4); }
+  .eval-card .percent { font-family:'Space Mono',monospace; font-size:36px; font-weight:700; color:var(--primary); line-height:1; margin-bottom:8px; }
+  .eval-card .eval-label { font-weight:700; font-size:14px; margin-bottom:6px; }
+  .eval-card .eval-desc { font-size:13px; color:var(--text-secondary); line-height:1.5; }
+
+  .module-detail { margin-bottom:40px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); }
+  .module-header { padding:20px 28px; color:white; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .module-header.m1 { background:linear-gradient(135deg,var(--mod1),#1d4ed8); }
+  .module-header.m2 { background:linear-gradient(135deg,var(--mod2),#047857); }
+  .module-header.m3 { background:linear-gradient(135deg,var(--mod3),#b45309); }
+  .module-header.m4 { background:linear-gradient(135deg,var(--mod4),#b91c1c); }
+  .module-header .mod-num { font-family:'Space Mono',monospace; font-size:13px; opacity:.7; letter-spacing:2px; }
+  .module-header h3 { font-size:18px; font-weight:700; margin:2px 0 0; color:white; }
+  .module-header .mod-meta { font-size:13px; opacity:.8; text-align:right; }
+  .module-objective { padding:16px 28px; font-size:14px; color:var(--text-secondary); background:var(--bg-alt); }
+  .module-objective strong { color:var(--text); }
+
+  .session-table { width:100%; border-collapse:collapse; font-size:13px; min-width: 760px; /* Force width on mobile */ }
+  .session-table thead th { padding:12px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-secondary); background:var(--bg); border-bottom:2px solid var(--border); border-top: 1px solid var(--border); font-weight:600; }
+  .session-table thead th:first-child { text-align:center; width:52px; }
+  .session-table thead th:last-child { text-align:center; width:48px; }
+  .session-table tbody tr { border-bottom:1px solid var(--border-light); background: var(--bg); }
+  .session-table tbody tr:nth-child(even) { background:var(--bg-alt); }
+  .session-table tbody tr:hover { background:#f0f4ff; }
+  .session-table tbody tr.exam-row { background:#fef2f2; font-weight:600; }
+  .session-table tbody tr.project-row { background:#eff6ff; font-weight:600; }
+  .session-table td { padding:12px 14px; vertical-align:top; }
+  .session-table td:first-child { text-align:center; font-family:'Space Mono',monospace; font-weight:700; font-size:12px; color:var(--text-light); }
+  .session-table td:last-child { text-align:center; font-family:'Space Mono',monospace; font-size:12px; }
+  .session-table .topic-name { font-weight:600; color:var(--text); }
+  
+  .tag { display:inline-block; font-size:10px; font-weight:600; padding:4px 8px; border-radius:100px; text-transform:uppercase; letter-spacing:.5px; white-space:nowrap; }
+  .tag-lecture { background:#dbeafe; color:#1e40af; }
+  .tag-lab { background:#d1fae5; color:#065f46; }
+  .tag-review { background:#e0e7ff; color:#3730a3; }
+  .tag-exam { background:#fee2e2; color:#991b1b; }
+  .tag-project { background:#fef3c7; color:#92400e; }
+
+  .tools-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+  .tool-card { padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-alt); }
+  .tool-card .tool-purpose { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-light); margin-bottom:6px; font-weight:600; }
+  .tool-card .tool-name { font-weight:700; font-size:15px; color:var(--primary); margin-bottom:4px; }
+  .tool-card .tool-desc { font-size:12px; color:var(--text-secondary); line-height:1.5; }
+
+  .alloc-bar { display:flex; height:40px; border-radius:var(--radius-sm); overflow:hidden; margin-bottom:16px; border:1px solid var(--border); }
+  .alloc-bar div { display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; letter-spacing:.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .alloc-legend { display:flex; flex-wrap:wrap; gap:16px; font-size:13px; }
+  .alloc-legend-item { display:flex; align-items:center; gap:8px; }
+  .alloc-dot { width:12px; height:12px; border-radius:3px; flex-shrink:0; }
+
+  .process-steps { position:relative; padding-left:32px; }
+  .process-steps::before { content:''; position:absolute; left:11px; top:8px; bottom:8px; width:2px; background:var(--border); }
+  .process-step { position:relative; margin-bottom:24px; padding-left:20px; }
+  .process-step:last-child { margin-bottom: 0; }
+  .process-step::before { content:''; position:absolute; left:-21px; top:8px; width:12px; height:12px; border-radius:50%; background:var(--secondary); border:3px solid white; box-shadow:0 0 0 2px var(--secondary); }
+  .process-step .step-label { font-weight:700; color:var(--primary); font-size:14px; margin-bottom:6px; }
+  .process-step .step-desc { color:var(--text-secondary); font-size:14px; line-height:1.6; }
+
+  .note-box { padding:20px 24px; background:var(--bg-warm); border-left:4px solid var(--mod3); border-radius:0 var(--radius-sm) var(--radius-sm) 0; margin:24px 0 0; font-size:14px; line-height:1.7; }
+  .note-box strong { color:var(--primary); }
+
+  .footer { text-align:center; padding:48px 20px 40px; color:var(--text-secondary); font-size:13px; }
+  .footer .logo-text { font-size:18px; font-weight:800; color:var(--primary); margin-bottom:8px; }
+  .footer .slogan { font-style:italic; color:var(--text-light); font-size:14px; }
+
+  /* ===== MOBILE RESPONSIVE STYLES ===== */
+  @media (max-width: 768px) {
+    section { padding: 32px 20px; margin: 16px auto; }
+    
+    /* Chỉnh Cover */
+    .cover-meta { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .cover-modules { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    
+    /* Chỉnh Grid đánh giá & Công cụ */
+    .eval-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    
+    /* Chỉnh Module Header */
+    .module-header { flex-direction: column; align-items: flex-start; }
+    .module-header .mod-meta { text-align: left; margin-top: 8px; font-size: 12px; opacity: 0.9; }
+    .module-objective { padding: 16px 20px; }
+    
+    /* Chỉnh List */
+    .obj-list li { padding: 16px; }
+
+    /* Allocation Bar: Ẩn bớt chữ nếu quá chật, để legend hiện rõ */
+    .alloc-bar div { font-size: 0; } /* Text ẩn đi, chỉ giữ thanh màu trên mobile */
+    .alloc-legend { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-badge">ShinTech Academy · 2026</div>
+    <h1>KHÓA HỌC AI<br><span>cho Bridge System Engineer</span></h1>
+    <p class="cover-subtitle">Syllabus Chương trình đào tạo · Phiên bản 1.0</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><div class="label">Tổng thời lượng</div><div class="value">96 giờ</div></div>
+      <div class="cover-meta-item"><div class="label">Số buổi</div><div class="value">48 buổi</div></div>
+      <div class="cover-meta-item"><div class="label">Thời gian</div><div class="value">~6 tháng</div></div>
+      <div class="cover-meta-item"><div class="label">Lịch học</div><div class="value">2 buổi/tuần</div></div>
+    </div>
+    <div class="cover-modules">
+      <div class="cover-mod m1"><span class="num">01</span>Python &<br>Thư viện</div>
+      <div class="cover-mod m2"><span class="num">02</span>AI<br>Cơ bản</div>
+      <div class="cover-mod m3"><span class="num">03</span>AI<br>Nâng cao</div>
+      <div class="cover-mod m4"><span class="num">04</span>Thiết kế<br>Hệ thống</div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-num">Phần 01</div>
+  <h2>Mục tiêu khóa học</h2>
+  <p style="color:var(--text-secondary);margin-bottom:20px;">Sau khi hoàn thành khóa học, học viên sẽ có khả năng:</p>
+  <ul class="obj-list">
+    <li><span class="icon">1</span><div><strong>Lập trình Python</strong> Sử dụng Python như một công cụ để diễn đạt logic và xây dựng prototype hệ thống AI.</div></li>
+    <li><span class="icon">2</span><div><strong>Thiết kế giải pháp AI</strong> Tự thiết kế và triển khai các giải pháp AI từ cơ bản (Deep Learning) đến nâng cao (RAG, Agents, Automation Workflow với n8n, Dify).</div></li>
+    <li><span class="icon">3</span><div><strong>Mô hình hóa bài toán</strong> Chuyển đổi yêu cầu thực tế từ khách hàng thành bài toán kỹ thuật cụ thể. Phân rã hệ thống phức tạp thành các khối chức năng (Input → Process → Output).</div></li>
+    <li><span class="icon">4</span><div><strong>Phân tích trade-off</strong> Lựa chọn giải pháp tối ưu giữa độ chính xác (Accuracy), tốc độ (Latency) và chi phí (Cost).</div></li>
+    <li><span class="icon">5</span><div><strong>Giao tiếp kỹ thuật</strong> Thành thạo sử dụng sơ đồ khối (block diagram) và sơ đồ luồng dữ liệu (data flow) để trình bày giải pháp chuyên nghiệp cho khách hàng Nhật Bản.</div></li>
+    <li><span class="icon">6</span><div><strong>Thiết kế Proposal</strong> Hình thành tư duy thiết kế đề xuất dự án từ những yêu cầu ban đầu còn mơ hồ của khách hàng.</div></li>
+    <li><span class="icon">7</span><div><strong>Hiểu kiến trúc hệ thống</strong> Đọc hiểu và đánh giá kiến trúc hệ thống AI (API, microservices, CI/CD, monitoring) để quản lý và kết nối hiệu quả giữa khách hàng và đội Dev.</div></li>
+  </ul>
+</section>
+
+<section>
+  <div class="section-num">Phần 02</div>
+  <h2>Đối tượng học viên</h2>
+  <div class="table-responsive">
+    <table class="info-table">
+      <tr><th>Trình độ tiếng Nhật</th><td>N3 trở lên hoặc trình độ tương đương</td></tr>
+      <tr><th>Nền tảng IT</th><td>Không yêu cầu kinh nghiệm lập trình chuyên sâu. Yêu thích CNTT và muốn tìm hiểu, định hướng phát triển nghề nghiệp trong ngành.</td></tr>
+      <tr><th>Mục tiêu nghề nghiệp</th><td>Muốn làm cầu nối (BrSE) giữa khách hàng Nhật Bản và đội ngũ phát triển, sử dụng AI như lợi thế cạnh tranh.</td></tr>
+      <tr><th>Thiết bị</th><td>Laptop cá nhân có thể cài đặt VS Code, Python, truy cập internet ổn định.</td></tr>
+      <tr><th>Công cụ hỗ trợ</th><td>Google Drive (tài liệu), Slack (giao tiếp), GitHub (nộp bài & Lab)</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">Phần 03</div>
+  <h2>Phương thức đánh giá</h2>
+  <div class="eval-grid">
+    <div class="eval-card"><div class="percent">40%</div><div class="eval-label">Quiz / Mini-test</div><div class="eval-desc">Mini-quiz cuối mỗi buổi học. Đánh giá sự đều đặn và nắm kiến thức liên tục.</div></div>
+    <div class="eval-card"><div class="percent">30%</div><div class="eval-label">Assignment / Lab</div><div class="eval-desc">Bài tập thực hành, lab, mini project cuối mỗi module.</div></div>
+    <div class="eval-card"><div class="percent">30%</div><div class="eval-label">Final Project</div><div class="eval-desc">Thiết kế hệ thống AI hoàn chỉnh. Trình bày Proposal giả lập họp với khách hàng Nhật.</div></div>
+  </div>
+  <div class="note-box">
+    <strong>Tiêu chí ưu tiên:</strong> Tư duy hệ thống và khả năng giải thích rõ ràng cho "khách hàng" được đánh giá cao hơn code phức tạp. Khuyến khích Final Project theo nhóm 2–3 người; đánh giá cao khả năng mô hình hóa bài toán và giao tiếp kỹ thuật.
+  </div>
+</section>
+
+<section>
+  <div class="section-num">Phần 04</div>
+  <h2>Cấu trúc khóa học — 4 Modules · 48 buổi · 96 giờ</h2>
+  <p style="color:var(--text-secondary);margin-bottom:28px;">Các module được sắp xếp theo logic xây nhà: nền tảng → khung → nội thất → hoàn thiện. Mỗi module 12 buổi (24 giờ), học 2 buổi/tuần trong khoảng 6 tháng.</p>
+
+  <div class="module-detail">
+    <div class="module-header m1"><div><div class="mod-num">MODULE 01</div><h3>Python & Thư viện phổ biến</h3></div><div class="mod-meta">24 giờ · 12 buổi<br>Tuần 1–6</div></div>
+    <div class="module-objective"><strong>Mục tiêu:</strong> Xây dựng nền tảng lập trình Python, tư duy phân rã bài toán, xây dựng pipeline xử lý dữ liệu. Kết hợp sử dụng GitHub Copilot trong lập trình.</div>
+    <div class="table-responsive">
+      <table class="session-table"><thead><tr><th>Buổi</th><th>Chủ đề</th><th>Nội dung (WHAT)</th><th>Phương pháp (HOW)</th><th>Đầu ra</th><th>Giờ</th></tr></thead><tbody>
+        <tr><td>01</td><td class="topic-name">Python cơ bản</td><td>Biến, kiểu dữ liệu, Control flow, rẽ nhánh, vòng lặp</td><td>Chuyển Flowchart → Code</td><td><span class="tag tag-lecture">Sơ đồ Data→Action</span></td><td>2</td></tr>
+        <tr><td>02</td><td class="topic-name">Hàm & Decomposition</td><td>Function là gì, chia bài toán lớn thành bài toán con</td><td>Vẽ cây phân rã bài toán</td><td><span class="tag tag-lab">Cây phân rã</span></td><td>2</td></tr>
+        <tr><td>03</td><td class="topic-name">Cấu trúc dữ liệu</td><td>list, dict, set — chọn cấu trúc phù hợp</td><td>Ánh xạ bài toán → cấu trúc</td><td><span class="tag tag-lab">Bài Lab</span></td><td>2</td></tr>
+        <tr><td>04</td><td class="topic-name">Data Modeling</td><td>Ánh xạ dữ liệu thực tế → cấu trúc</td><td>Mô hình hóa dữ liệu</td><td><span class="tag tag-lab">Mini assignment</span></td><td>2</td></tr>
+        <tr><td>05</td><td class="topic-name">Class & OOP</td><td>Hướng đối tượng, class, lớp trừu tượng</td><td>Tư duy thiết kế class</td><td><span class="tag tag-lecture">Sơ đồ thiết kế lớp</span></td><td>2</td></tr>
+        <tr><td>06</td><td class="topic-name">Scope & Schema</td><td>Scope, input/output, Schema</td><td>Thiết kế function theo block</td><td><span class="tag tag-lab">Code mini-task</span></td><td>2</td></tr>
+        <tr><td>07</td><td class="topic-name">Debug Mindset (1)</td><td>Bug thường gặp, Logging</td><td>Trace theo data flow</td><td><span class="tag tag-review">Debug exercise</span></td><td>2</td></tr>
+        <tr><td>08</td><td class="topic-name">Debug Mindset (2)</td><td>Print trace, debug có hệ thống</td><td>Case study debug thực tế</td><td><span class="tag tag-review">Case study</span></td><td>2</td></tr>
+        <tr><td>09</td><td class="topic-name">Python Pipeline (1)</td><td>Khái niệm API, Input → Process → Output</td><td>Ghép pipeline xử lý</td><td><span class="tag tag-lab">Lab</span></td><td>2</td></tr>
+        <tr><td>10</td><td class="topic-name">Python Pipeline (2)</td><td>Modular pipeline, viết pipeline có hàm</td><td>Thiết kế pipeline module hóa</td><td><span class="tag tag-project">Mini project draft</span></td><td>2</td></tr>
+        <tr class="project-row"><td>11</td><td class="topic-name">Mini Project</td><td>Tổng hợp + GitHub Copilot</td><td>Vẽ block diagram trước khi code</td><td><span class="tag tag-project">Demo</span></td><td>2</td></tr>
+        <tr class="exam-row"><td>12</td><td class="topic-name">Exam #1 + Review</td><td>Kiểm tra logic Python & SQL cơ bản</td><td>Review tổng hợp Module 1</td><td><span class="tag tag-exam">Nộp project</span></td><td>2</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div class="module-detail">
+    <div class="module-header m2"><div><div class="mod-num">MODULE 02</div><h3>AI Cơ bản — Mô hình hóa vấn đề</h3></div><div class="mod-meta">24 giờ · 12 buổi<br>Tuần 7–12</div></div>
+    <div class="module-objective"><strong>Mục tiêu:</strong> Hiểu bản chất AI, phân loại bài toán, xây dựng AI pipeline hoàn chỉnh, làm quen kiến trúc Transformer và LLM.</div>
+    <div class="table-responsive">
+      <table class="session-table"><thead><tr><th>Buổi</th><th>Chủ đề</th><th>Nội dung (WHAT)</th><th>Phương pháp (HOW)</th><th>Đầu ra</th><th>Giờ</th></tr></thead><tbody>
+        <tr><td>01</td><td class="topic-name">AI là gì (System View)</td><td>ML, DL, Rule-based — phân loại hệ thống AI</td><td>Phân loại bài toán AI thực tế</td><td><span class="tag tag-lecture">Quiz</span></td><td>2</td></tr>
+        <tr><td>02</td><td class="topic-name">Input–Output Mapping</td><td>Pipeline AI, ánh xạ đầu vào – đầu ra</td><td>Vẽ pipeline AI</td><td><span class="tag tag-lecture">Diagram</span></td><td>2</td></tr>
+        <tr><td>03</td><td class="topic-name">Supervised Learning</td><td>Regression, Classification</td><td>Bản chất model AI hoạt động</td><td><span class="tag tag-lab">Lab</span></td><td>2</td></tr>
+        <tr><td>04</td><td class="topic-name">Unsupervised Learning</td><td>Clustering, Train/Eval split</td><td>Đọc pipeline huấn luyện</td><td><span class="tag tag-lab">Assignment</span></td><td>2</td></tr>
+        <tr><td>05</td><td class="topic-name">Data & Feature (1)</td><td>Feature là gì, Feature Engineering</td><td>Biến dữ liệu thô → feature</td><td><span class="tag tag-lab">Lab</span></td><td>2</td></tr>
+        <tr><td>06</td><td class="topic-name">Data & Feature (2)</td><td>Feature pipeline, tiền xử lý dữ liệu</td><td>Thiết kế preprocess pipeline</td><td><span class="tag tag-lab">Mini task</span></td><td>2</td></tr>
+        <tr><td>07</td><td class="topic-name">Evaluation Mindset</td><td>Accuracy, Precision, Recall, Confusion Matrix</td><td>Chọn metric đúng bài toán</td><td><span class="tag tag-review">Case study</span></td><td>2</td></tr>
+        <tr><td>08</td><td class="topic-name">AI Pipeline</td><td>Data → Model → Prediction, Debug pipeline</td><td>Ghép pipeline hoàn chỉnh, trace lỗi</td><td><span class="tag tag-project">Project draft</span></td><td>2</td></tr>
+        <tr><td>09</td><td class="topic-name">Transformer</td><td>Kiến trúc Transformer, cách thức hoạt động</td><td>Phân tích kiến trúc mô hình</td><td><span class="tag tag-lab">Debug lab</span></td><td>2</td></tr>
+        <tr><td>10</td><td class="topic-name">LLM</td><td>LLM là gì, công cụ tạo & tìm hiểu LLM, gọi API</td><td>Vẽ block diagram, thực hành gọi API</td><td><span class="tag tag-project">Demo</span></td><td>2</td></tr>
+        <tr class="project-row"><td>11</td><td class="topic-name">Mini Project</td><td>Tổng hợp + GitHub Copilot</td><td>Vẽ block diagram trước khi code</td><td><span class="tag tag-project">Quiz + Demo</span></td><td>2</td></tr>
+        <tr class="exam-row"><td>12</td><td class="topic-name">Exam #2 + Review</td><td>Đọc & phân tích pipeline AI</td><td>Review tổng hợp Module 2</td><td><span class="tag tag-exam">Nộp project</span></td><td>2</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div class="module-detail">
+    <div class="module-header m3"><div><div class="mod-num">MODULE 03</div><h3>AI Nâng cao — RAG, Agents & Workflow</h3></div><div class="mod-meta">24 giờ · 12 buổi<br>Tuần 13–18</div></div>
+    <div class="module-objective"><strong>Mục tiêu:</strong> Nắm vững kỹ thuật chuyên sâu: RAG, Multi-Agent, Automation Workflow với n8n/Dify, Prompt Engineering & Evaluation.</div>
+    <div class="table-responsive">
+      <table class="session-table"><thead><tr><th>Buổi</th><th>Chủ đề</th><th>Nội dung (WHAT)</th><th>Phương pháp (HOW)</th><th>Đầu ra</th><th>Giờ</th></tr></thead><tbody>
+        <tr><td>01</td><td class="topic-name">Trade-off hệ thống AI</td><td>Under/Overfitting, Regularization, Trade-off</td><td>Accuracy vs Latency vs Cost</td><td><span class="tag tag-lecture">Quiz</span></td><td>2</td></tr>
+        <tr><td>02</td><td class="topic-name">Model Optimization</td><td>Hyperparameter tuning</td><td>Tuning có chiến lược</td><td><span class="tag tag-lab">Lab</span></td><td>2</td></tr>
+        <tr><td>03</td><td class="topic-name">RAG (1)</td><td>Embedding, Vector DB</td><td>Thiết kế pipeline RAG</td><td><span class="tag tag-lab">Lab</span></td><td>2</td></tr>
+        <tr><td>04</td><td class="topic-name">RAG (2)</td><td>Gọi GPT API, tích hợp vào pipeline</td><td>Tích hợp API vào RAG pipeline</td><td><span class="tag tag-lecture">Quiz</span></td><td>2</td></tr>
+        <tr><td>05</td><td class="topic-name">Multi-Agent</td><td>Chia việc cho nhiều agent</td><td>Điều phối nhiều agent phối hợp</td><td><span class="tag tag-lab">Lab</span></td><td>2</td></tr>
+        <tr><td>06</td><td class="topic-name">So sánh & Lựa chọn Model</td><td>Mapping bài toán → model phù hợp</td><td>Phân tích, so sánh các model</td><td><span class="tag tag-lab">Assignment</span></td><td>2</td></tr>
+        <tr><td>07</td><td class="topic-name">Workflow AI</td><td>Orchestration pipeline</td><td>Ghép nhiều bước AI thành workflow</td><td><span class="tag tag-project">Lab project</span></td><td>2</td></tr>
+        <tr><td>08</td><td class="topic-name">Automation Workflow</td><td>Giới thiệu n8n, Dify</td><td>Cách thức automation workflow hoạt động</td><td><span class="tag tag-lab">Mini task</span></td><td>2</td></tr>
+        <tr><td>09</td><td class="topic-name">Failure Analysis</td><td>Hallucination, retrieval lỗi</td><td>Trace lỗi theo flow, phân tích nguyên nhân</td><td><span class="tag tag-review">Assignment</span></td><td>2</td></tr>
+        <tr><td>10</td><td class="topic-name">Prompt Tuning & Eval</td><td>Tối ưu prompt, đánh giá chất lượng output</td><td>Optimize chất lượng qua evaluation</td><td><span class="tag tag-lab">Assignment</span></td><td>2</td></tr>
+        <tr class="project-row"><td>11</td><td class="topic-name">Project Nâng cao</td><td>RAG + Agent + Workflow tổng hợp</td><td>Block diagram + report</td><td><span class="tag tag-project">Milestone</span></td><td>2</td></tr>
+        <tr class="exam-row"><td>12</td><td class="topic-name">Exam #3 + Review</td><td>Tổng kết Module 3: RAG + Agent</td><td>Retro tư duy, review tổng hợp</td><td><span class="tag tag-exam">Nộp project</span></td><td>2</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div class="module-detail">
+    <div class="module-header m4"><div><div class="mod-num">MODULE 04</div><h3>Thiết kế & Triển khai hệ thống AI</h3></div><div class="mod-meta">24 giờ · 12 buổi<br>Tuần 19–24</div></div>
+    <div class="module-objective"><strong>Mục tiêu:</strong> Hiểu kiến trúc hệ thống AI, API design, scalability, deployment, bảo mật. Hoàn thành Capstone Project — trình bày Proposal cho khách hàng Nhật.</div>
+    <div class="table-responsive">
+      <table class="session-table"><thead><tr><th>Buổi</th><th>Chủ đề</th><th>Nội dung (WHAT)</th><th>Phương pháp (HOW)</th><th>Đầu ra</th><th>Giờ</th></tr></thead><tbody>
+        <tr><td>01</td><td class="topic-name">System Thinking</td><td>System là gì, Layered Design</td><td>Phân rã hệ thống, vẽ User → API → Service</td><td><span class="tag tag-lecture">Diagram + Lab</span></td><td>2</td></tr>
+        <tr><td>02</td><td class="topic-name">API & Service Design</td><td>REST, Authentication</td><td>Định nghĩa API Contract</td><td><span class="tag tag-lab">Lab</span></td><td>2</td></tr>
+        <tr><td>03</td><td class="topic-name">AI trong hệ thống (1)</td><td>Online vs Offline Inference</td><td>Deploy & monitor AI</td><td><span class="tag tag-review">Case study</span></td><td>2</td></tr>
+        <tr><td>04</td><td class="topic-name">AI trong hệ thống (2)</td><td>Model as Service, Inference Flow</td><td>Thiết kế inference flow</td><td><span class="tag tag-lecture">Diagram</span></td><td>2</td></tr>
+        <tr><td>05</td><td class="topic-name">Scalability</td><td>Bottleneck, Scale từng thành phần</td><td>Phát hiện & xử lý bottleneck</td><td><span class="tag tag-lab">Assignment</span></td><td>2</td></tr>
+        <tr><td>06</td><td class="topic-name">Cache & Queue</td><td>Caching strategy, Message Queue</td><td>Giải bài toán scale thực tế</td><td><span class="tag tag-lab">Lab</span></td><td>2</td></tr>
+        <tr><td>07</td><td class="topic-name">Failure & Resilience</td><td>Failure mode, Retry, Fallback</td><td>Thiết kế hệ thống chịu lỗi</td><td><span class="tag tag-lecture">Diagram</span></td><td>2</td></tr>
+        <tr><td>08</td><td class="topic-name">Deployment</td><td>CI/CD, Container (Docker)</td><td>Pipeline triển khai thực tế</td><td><span class="tag tag-lab">Assignment</span></td><td>2</td></tr>
+        <tr><td>09</td><td class="topic-name">Security & Ops</td><td>Threat modeling, giám sát hệ thống</td><td>Thiết kế hệ thống an toàn</td><td><span class="tag tag-lecture">Quiz</span></td><td>2</td></tr>
+        <tr><td>10</td><td class="topic-name">Review tổng hợp</td><td>Trade-off analysis toàn bộ khóa học</td><td>Tổng hợp kiến thức, retro tư duy</td><td><span class="tag tag-review">Review</span></td><td>2</td></tr>
+        <tr class="project-row"><td>11</td><td class="topic-name">Capstone Project</td><td>Thiết kế hệ thống AI hoàn chỉnh từ yêu cầu mơ hồ</td><td>Block diagram + Data flow + Trình bày</td><td><span class="tag tag-project">Demo hệ thống</span></td><td>2</td></tr>
+        <tr class="exam-row"><td>12</td><td class="topic-name">Final Defense</td><td>Trình bày Proposal — giả lập buổi họp với khách hàng Nhật</td><td>Thuyết trình giải pháp kỹ thuật</td><td><span class="tag tag-exam">Nộp Final</span></td><td>2</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">Phần 05</div>
+  <h2>Phân bổ thời lượng theo hình thức</h2>
+  <div class="alloc-bar">
+    <div style="width:71%;background:var(--mod1);">Lecture 71%</div>
+    <div style="width:12%;background:var(--mod2);">Lab 12%</div>
+    <div style="width:2%;background:#6366f1;"></div>
+    <div style="width:7%;background:var(--mod3);">Quiz 7%</div>
+    <div style="width:8%;background:var(--mod4);">Exam 8%</div>
+  </div>
+  <div class="alloc-legend">
+    <div class="alloc-legend-item"><div class="alloc-dot" style="background:var(--mod1);"></div>Concept / Lecture — ~68 giờ</div>
+    <div class="alloc-legend-item"><div class="alloc-dot" style="background:var(--mod2);"></div>Assignment / Lab — ~12 giờ</div>
+    <div class="alloc-legend-item"><div class="alloc-dot" style="background:#6366f1;"></div>Guides / Review — ~2 giờ</div>
+    <div class="alloc-legend-item"><div class="alloc-dot" style="background:var(--mod3);"></div>Test / Quiz — ~7 giờ</div>
+    <div class="alloc-legend-item"><div class="alloc-dot" style="background:var(--mod4);"></div>Exam — ~8 giờ</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">Phần 06</div>
+  <h2>Quy trình thực hiện mỗi buổi học</h2>
+  <div class="process-steps">
+    <div class="process-step"><div class="step-label">Trước buổi học — Tự chuẩn bị</div><div class="step-desc">Giảng viên gửi tài liệu & bài tập trước. Học viên tự học, cài đặt môi trường (VS Code, Python), đọc tài liệu kỹ thuật / System Flow, và ghi lại câu hỏi.</div></div>
+    <div class="process-step"><div class="step-label">Trên lớp — Phase 1: Giảng lý thuyết (40%)</div><div class="step-desc">Giảng viên trình bày WHAT (khái niệm cốt lõi) và HOW (cách thức triển khai). Tập trung vào tư duy hệ thống, không chỉ đúng/sai code.</div></div>
+    <div class="process-step"><div class="step-label">Trên lớp — Phase 2: Lab Hands-on (40%)</div><div class="step-desc">Học viên thực hành trực tiếp. Giảng viên không đưa đáp án hoàn chỉnh — đặt câu hỏi gợi mở để học viên tự phát hiện lỗi tư duy.</div></div>
+    <div class="process-step"><div class="step-label">Trên lớp — Phase 3: Review & Quiz (20%)</div><div class="step-desc">Review bài tiêu biểu, phân tích lỗi phổ biến. Mini-quiz cuối buổi về thuật ngữ IT, logic lập trình để củng cố kiến thức.</div></div>
+    <div class="process-step"><div class="step-label">Sau buổi học — Bài tập & Reflection</div><div class="step-desc">Giao bài tập tiếp theo. Học viên tự giải và ghi lại câu hỏi để hỏi buổi sau. Trợ giảng hỗ trợ giải đáp thắc mắc trên Slack.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">Phần 07</div>
+  <h2>Công cụ & Môi trường học tập</h2>
+  <div class="tools-grid">
+    <div class="tool-card"><div class="tool-purpose">Lập trình</div><div class="tool-name">VS Code + Python</div><div class="tool-desc">IDE chính cho toàn bộ khóa học. Học viên tự cài đặt trước khi bắt đầu.</div></div>
+    <div class="tool-card"><div class="tool-purpose">AI Coding Assistant</div><div class="tool-name">GitHub Copilot</div><div class="tool-desc">Hỗ trợ viết code, debug, và tăng tốc quá trình phát triển.</div></div>
+    <div class="tool-card"><div class="tool-purpose">Quản lý code</div><div class="tool-name">GitHub</div><div class="tool-desc">Nộp bài, Lab, version control. Thực hành quy trình Dev thực tế.</div></div>
+    <div class="tool-card"><div class="tool-purpose">Automation</div><div class="tool-name">n8n · Dify</div><div class="tool-desc">Xây dựng workflow tự động hóa và AI pipeline no-code/low-code.</div></div>
+    <div class="tool-card"><div class="tool-purpose">AI Platform</div><div class="tool-name">OpenAI API · LLM</div><div class="tool-desc">Gọi API, xây dựng RAG pipeline, Multi-Agent system.</div></div>
+    <div class="tool-card"><div class="tool-purpose">Giao tiếp</div><div class="tool-name">Slack</div><div class="tool-desc">Kênh trao đổi chính ngoài giờ học. Hỏi đáp, thảo luận nhóm.</div></div>
+    <div class="tool-card"><div class="tool-purpose">Tài liệu</div><div class="tool-name">Google Drive</div><div class="tool-desc">Lưu trữ bài giảng, slide, tài liệu tham khảo.</div></div>
+    <div class="tool-card"><div class="tool-purpose">Kiểm tra</div><div class="tool-name">LMS / Google Form</div><div class="tool-desc">Quiz lý thuyết. Nộp code + sơ đồ hệ thống qua GitHub.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">Phần 08</div>
+  <h2>Lộ trình kiểm tra & Milestone</h2>
+  <div class="table-responsive">
+    <table class="info-table">
+      <tr><th style="background:var(--mod1-bg);color:var(--mod1);border-color:var(--mod1-border);">Chặng I<br><small style="font-weight:400;">Cuối Module 1</small></th><td>Kiểm tra tư duy logic Python & SQL cơ bản. Đánh giá khả năng phân rã bài toán và viết code từ flowchart.</td></tr>
+      <tr><th style="background:var(--mod2-bg);color:var(--mod2);border-color:var(--mod2-border);">Chặng II<br><small style="font-weight:400;">Cuối Module 2</small></th><td>Đọc & phân tích pipeline AI. Đánh giá khả năng mô hình hóa bài toán và chọn metric phù hợp.</td></tr>
+      <tr><th style="background:var(--mod3-bg);color:var(--mod3);border-color:var(--mod3-border);">Chặng III<br><small style="font-weight:400;">Cuối Module 3</small></th><td>RAG + Agent + Workflow. Đánh giá khả năng thiết kế hệ thống AI nâng cao và xử lý failure.</td></tr>
+      <tr><th style="background:var(--mod4-bg);color:var(--mod4);border-color:var(--mod4-border);">Final Defense<br><small style="font-weight:400;">Cuối Module 4</small></th><td><strong>Capstone Project:</strong> Thiết kế hệ thống AI hoàn chỉnh từ yêu cầu mơ hồ, vẽ sơ đồ khối, và trình bày Proposal — giả lập buổi họp với khách hàng Nhật.</td></tr>
+    </table>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="logo-text">ShinTech Academy</div>
+  <div class="slogan">"Đào tạo BrSE thế hệ mới — Kết nối công nghệ AI với thị trường Nhật Bản"</div>
+  <p style="margin-top:16px;font-size:12px;color:var(--text-light);">Syllabus v1.0 · © 2026 ShinTech Academy · Mọi quyền được bảo lưu</p>
+</div>
+
+</body>
+</html>
